@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>welcome</title>
+    <script src="jquery-3.2.1.min.js"></script>
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <script src="bootstrap.min.js"></script>
+
+</head>
+<body>
+<div class = 'container'>
+    <form>
+        <img id='img' width="500px" height="500px" src="../14.JPG">
+        <button class="btn-default" id="submit" onclick="info_post()">submit</button>
+    </form>
+</div>
+</body>
+<script>
+    function info_post() {
+        $.ajax(
+            {
+                url:"http://101.132.144.11/handleImage",
+                "Content-Type": "application/json;charset=utf-8",
+                type: "POST",
+                dataType: "json",
+                data:JSON.stringify({
+                    "address":"hust",
+                    "time":"12136401",
+                    "img":$('#img')
+                })
+            }
+        ).done(function (result) {
+            console(result);
+        })
+    }
+</script>
+</html>
